@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8380009239260853876}
   - component: {fileID: 8657257289680351682}
   - component: {fileID: 2512803104494028517}
+  - component: {fileID: -4321214775555214311}
   m_Layer: 0
   m_Name: Wagon
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1979b5032a9a1b2408f963a45fd91604, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,12 +83,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -3203983479134088466, guid: e26be897965145c42a6370dd035efcf3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.28, y: 1.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -104,3 +105,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf4be775fb6b474693f4327c82f34f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wagon
+  order: 0
+  isSelected: 0
+  train: {fileID: 0}
+--- !u!114 &-4321214775555214311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508091612631065984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18863dc2651c5d14e859c46868ddbe9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OutlineController
+  color: {r: 0.74901956, g: 0, b: 0.09411765, a: 1}
+  radius: 6
+  wagon: {fileID: 2512803104494028517}
+  intensity: 1.5
