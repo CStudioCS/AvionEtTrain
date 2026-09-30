@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Avion : MonoBehaviour
@@ -5,6 +6,7 @@ public class Avion : MonoBehaviour
     private InputSystem_Actions inputActions;
     [HideInInspector] public Vector2 movementInput;
     private bool dashInput;
+    private bool shootInput;
     private Quaternion defaultRotation = Quaternion.identity;
     [SerializeField] private float playerSpeed;
     [SerializeField] public Rigidbody2D rb;
@@ -15,6 +17,12 @@ public class Avion : MonoBehaviour
     [SerializeField] private float dashDuration;
     private Dash dash;
 
+    [Header("Shooting")]
+    [SerializeField] private float bulletCooldown;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private GameObject bullet;
+    private Shoot shoot;
+
 
     private void Awake()
     {
@@ -24,6 +32,7 @@ public class Avion : MonoBehaviour
     private void Start()
     {
         dash = new Dash(dashCooldown, dashSpeed, dashDuration, this);
+        shoot = new Shoot(bulletCooldown, bulletSpeed,  this, bullet);
     }
 
     private void OnEnable()
@@ -41,6 +50,7 @@ public class Avion : MonoBehaviour
         //input
         movementInput = inputActions.Avion.Move.ReadValue<Vector2>();
         dashInput = inputActions.Avion.Dash.WasPressedThisFrame();
+        shootInput = inputActions.Avion.Shoot.WasPressedThisFrame();
 
         //rotation
         if (movementInput.sqrMagnitude > 0.01f)
@@ -64,5 +74,9 @@ public class Avion : MonoBehaviour
         dash.Update(Time.deltaTime);
         if (dashInput && movementInput.x >= 0)//dash only towards right side of the screen
             dash.TryActivate();
+        
+        shoot.Update(Time.deltaTime);
+        if (shootInput)
+            shoot.TryActivate();
     }
 }

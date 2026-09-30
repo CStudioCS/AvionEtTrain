@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ComponentVersion: 2
+  m_ComponentVersion: 3
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
@@ -534,6 +534,8 @@ MonoBehaviour:
   dashCooldown: 2
   dashSpeed: 10
   dashDuration: 0.2
+  bulletCooldown: 0.1
+  bulletSpeed: 10
 --- !u!50 &1393309269
 Rigidbody2D:
   serializedVersion: 5
