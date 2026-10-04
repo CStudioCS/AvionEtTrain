@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4556539657447932452}
   - component: {fileID: 2457493200521197944}
   m_Layer: 0
-  m_Name: Train
+  m_Name: TrainPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
