@@ -1,5 +1,3 @@
-using System;
-using System.Linq.Expressions;
 using UnityEngine;
 
 public class Avion : MonoBehaviour
@@ -8,21 +6,14 @@ public class Avion : MonoBehaviour
     [HideInInspector] public Vector2 movementInput;
     private bool dashInput;
     private Quaternion defaultRotation = Quaternion.identity;
-    [SerializeField] private float playerSpeedX;
-    [SerializeField] private float playerSpeedY;
+    [SerializeField] private float playerSpeed;
     [SerializeField] public Rigidbody2D rb;
 
     [Header("Dash")]
     [SerializeField] private float dashCooldown;
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashDuration;
-    [SerializeField] private float windSpeed;
     private Dash dash;
-
-    [Header("Graphics")]
-    [SerializeField] private float pitchAmplitude;//l'amplitude de l'orientation verticale de l'avion, >=0.
-    [SerializeField] private float changePitchSpeed;//la vitesse à laquelle l'avion change d'orientation
-    [SerializeField] private float backToDefaultPositionSpeed;//Entre 0 et 1.
 
 
     private void Awake()
@@ -32,7 +23,6 @@ public class Avion : MonoBehaviour
 
     private void Start()
     {
-
         dash = new Dash(dashCooldown, dashSpeed, dashDuration, this);
     }
 
@@ -53,30 +43,22 @@ public class Avion : MonoBehaviour
         dashInput = inputActions.Avion.Dash.WasPressedThisFrame();
 
         //rotation
-        if (Mathf.Abs(movementInput.y) > 0.01f)
+        if (movementInput.sqrMagnitude > 0.01f)
         {
-            float angleDeg = 90 - Mathf.Atan2(movementInput.x, movementInput.y) * Mathf.Rad2Deg ;
-            float newAngle = (transform.rotation.eulerAngles.z+180)%360 - 180 + changePitchSpeed * Mathf.Sign(movementInput.y);
-            if (Mathf.Abs(newAngle)<=pitchAmplitude)
+            float angleDeg = Mathf.Atan2(movementInput.y, movementInput.x) * Mathf.Rad2Deg;
+            if (-50 <= angleDeg && angleDeg <= 50)
             {
-                transform.rotation = Quaternion.Euler(0f, 0f,newAngle);
+                transform.rotation = Quaternion.Euler(0f, 0f, angleDeg);
+            }
+            else
+            {
+                transform.rotation = defaultRotation;
             }
         }
-        else
-        {
- 
-            transform.rotation = Quaternion.Euler(0f, 0f,((transform.rotation.eulerAngles.z + 180f) % 360f - 180f) * backToDefaultPositionSpeed);
-        }
-        
-        
+
         //movement
-        rb.linearVelocityX -= windSpeed;
         if (movementInput.sqrMagnitude > 0.01f)
-            rb.linearVelocityX += movementInput.x * playerSpeedX;
-            rb.linearVelocityY = Mathf.Sin(Mathf.Deg2Rad*transform.rotation.eulerAngles.z) * playerSpeedY;
-
-
-
+            rb.linearVelocity = movementInput * playerSpeed;
 
         //abilities
         dash.Update(Time.deltaTime);
