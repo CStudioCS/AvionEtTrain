@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: d466e33d6d9b5fe4ca6be4da4be9dc1d
+guid: 9e90bd56a80b0e04f8381fc9f4935a2b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4046221864835399290
-    second: avion_0
+      213: -7197428519724822720
+    second: far_background_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -40,9 +40,9 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -55,9 +55,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 0
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: avion_0
+      name: far_background_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 279
-        width: 1902
-        height: 658
+        x: 0
+        y: 0
+        width: 2046
+        height: 1025
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7ebee72951172830800000000000000
-      internalID: 4046221864835399290
+      spriteID: 04f498915e89d1c90800000000000000
+      internalID: -7197428519724822720
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      avion_0: 4046221864835399290
+      far_background_0: -7197428519724822720
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

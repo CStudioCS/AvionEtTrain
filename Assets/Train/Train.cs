@@ -7,36 +7,24 @@ public class Train : MonoBehaviour
 {
     public Train instance;
 
-    public float distance;
+    public float speed;
     public float money;
 
     public Vector3 FirstPos;
 
-    [SerializeField] private List<Wagon> WagonPrefab = new List<Wagon>();
+    public Wagon Wagon;
     private List<Wagon> WagonList = new List<Wagon>();
 
     private int SelectedWagon;
 
-    private void Start()
+    public bool spawn;
+
+    public void CreateWagon()
     {
-        instance = this;
-        for(int i = 0; i < WagonPrefab.Count; i++)
-        {
-            InstantiateWagon(i);
-        }
-        distance = 0;
-        money = 0;
-    }
-
-    public void InstantiateWagon(int i)
-    {
-        if(i >= WagonPrefab.Count || i < 0) return;
-
-        Wagon wagon = Instantiate(WagonPrefab[i], transform);
-
+        Wagon wagon = Instantiate(Wagon,transform);
         wagon.train = this;
         wagon.order = WagonList.Count;
-        if(i == 0)
+        if(WagonList.Count == 0)
         {
             wagon.transform.position = FirstPos;
             wagon.isSelected = true;
@@ -44,7 +32,7 @@ public class Train : MonoBehaviour
         }
         else
         {
-            wagon.transform.position = WagonList[WagonList.Count - 1].transform.position - (WagonList[WagonList.Count - 1].GetComponent<SpriteRenderer>().bounds.size.x + wagon.GetComponent<SpriteRenderer>().bounds.size.x) * Vector3.right * 0.5f * 1.1f;
+            wagon.transform.position = WagonList[WagonList.Count - 1].transform.position - (WagonList[WagonList.Count - 1].GetComponent<SpriteRenderer>().bounds.size.x + Wagon.GetComponent<SpriteRenderer>().bounds.size.x) * Vector3.right * 0.5f * 1.1f;
             wagon.isSelected = false;
         }
 
@@ -53,6 +41,12 @@ public class Train : MonoBehaviour
 
     public void Update()
     {
+        if(spawn)
+        {
+            spawn = false;
+            CreateWagon();
+        }
+
         var kb = Keyboard.current;
         if (kb == null) return;
 
