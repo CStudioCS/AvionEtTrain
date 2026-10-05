@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &219434593964484091
+--- !u!1 &2250748515283973854
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,101 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 797924996967060054}
-  - component: {fileID: 9097455575565567275}
-  - component: {fileID: 6345650726194224128}
-  - component: {fileID: 2094958778318508}
+  - component: {fileID: 5949071602860577715}
+  - component: {fileID: 1297589862993995842}
+  m_Layer: 0
+  m_Name: BackgroundManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5949071602860577715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250748515283973854}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6337264873853250519}
+  - {fileID: 3915256404039476206}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1297589862993995842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250748515283973854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da1ad06168122d4fb9b67f6619df0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxBackground
+  cam: {fileID: 0}
+  followCamera: 1
+  baseSpeed: 20
+  focalDistance: 10
+  unscaledTime: 0
+  scaleWithDistance: 1
+  distanceTint: {r: 0.75, g: 0.82, b: 0.95, a: 1}
+  maxFade: 0.1
+  fogDistance: 150
+  sortingLayer: Default
+  frontSortingOrder: -1
+  uvLayers:
+  - renderer: {fileID: 4099971309802559799}
+    distance: 300
+  - renderer: {fileID: 4194589215359217617}
+    distance: 150
+  layers:
+  - name: tree
+    sprites:
+    - {fileID: 21300000, guid: 2c05d3275d6296941a5b65981cfd06a9, type: 3}
+    distance: 160
+    count: 10
+    heightRange: {x: 0.32, y: 0.38}
+    scaleRange: {x: 20, y: 25}
+    gapRange: {x: 30, y: 30}
+    randomFlipX: 0
+  - name: tree
+    sprites:
+    - {fileID: 21300000, guid: 2c05d3275d6296941a5b65981cfd06a9, type: 3}
+    distance: 35
+    count: 3
+    heightRange: {x: 0.3, y: 0.3}
+    scaleRange: {x: 20, y: 20}
+    gapRange: {x: 50, y: 50}
+    randomFlipX: 0
+  - name: tree
+    sprites:
+    - {fileID: 21300000, guid: 2c05d3275d6296941a5b65981cfd06a9, type: 3}
+    distance: 80
+    count: 3
+    heightRange: {x: 0.3, y: 0.3}
+    scaleRange: {x: 20, y: 20}
+    gapRange: {x: 50, y: 50}
+    randomFlipX: 0
+  seed: 0
+--- !u!1 &4716308386813563589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3915256404039476206}
+  - component: {fileID: 4898809328686617185}
+  - component: {fileID: 4194589215359217617}
+  - component: {fileID: 4863289377395225272}
   m_Layer: 0
   m_Name: Quad (1)
   m_TagString: Untagged
@@ -19,36 +110,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &797924996967060054
+--- !u!4 &3915256404039476206
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219434593964484091}
+  m_GameObject: {fileID: 4716308386813563589}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 18, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 443660913399522355}
+  m_Father: {fileID: 5949071602860577715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &9097455575565567275
+--- !u!33 &4898809328686617185
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219434593964484091}
+  m_GameObject: {fileID: 4716308386813563589}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6345650726194224128
+--- !u!23 &4194589215359217617
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219434593964484091}
+  m_GameObject: {fileID: 4716308386813563589}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -91,13 +182,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2094958778318508
+--- !u!64 &4863289377395225272
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219434593964484091}
+  m_GameObject: {fileID: 4716308386813563589}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -113,7 +204,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2423863746017981895
+--- !u!1 &6271395718696991668
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,10 +212,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2551176714245177779}
-  - component: {fileID: 5193880030739295702}
-  - component: {fileID: 72178118772862103}
-  - component: {fileID: 3463126443975081901}
+  - component: {fileID: 6337264873853250519}
+  - component: {fileID: 90258196496050590}
+  - component: {fileID: 4099971309802559799}
+  - component: {fileID: 188432987596783897}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -132,36 +223,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2551176714245177779
+--- !u!4 &6337264873853250519
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2423863746017981895}
+  m_GameObject: {fileID: 6271395718696991668}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 18, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 443660913399522355}
+  m_Father: {fileID: 5949071602860577715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5193880030739295702
+--- !u!33 &90258196496050590
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2423863746017981895}
+  m_GameObject: {fileID: 6271395718696991668}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &72178118772862103
+--- !u!23 &4099971309802559799
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2423863746017981895}
+  m_GameObject: {fileID: 6271395718696991668}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -204,13 +295,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3463126443975081901
+--- !u!64 &188432987596783897
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2423863746017981895}
+  m_GameObject: {fileID: 6271395718696991668}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -226,94 +317,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &3458498733739531891
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 443660913399522355}
-  - component: {fileID: 5782014679309534853}
-  m_Layer: 0
-  m_Name: BackgroundManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &443660913399522355
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3458498733739531891}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2551176714245177779}
-  - {fileID: 797924996967060054}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5782014679309534853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3458498733739531891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6da1ad06168122d4fb9b67f6619df0fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ParallaxBackground
-  cam: {fileID: 0}
-  followCamera: 1
-  baseSpeed: 20
-  focalDistance: 10
-  unscaledTime: 0
-  scaleWithDistance: 1
-  distanceTint: {r: 0.75, g: 0.82, b: 0.95, a: 1}
-  maxFade: 0.1
-  fogDistance: 150
-  sortingLayer: Default
-  frontSortingOrder: -1
-  uvLayers:
-  - renderer: {fileID: 72178118772862103}
-    distance: 300
-  - renderer: {fileID: 6345650726194224128}
-    distance: 150
-  layers:
-  - name: tree
-    sprites:
-    - {fileID: 21300000, guid: 2c05d3275d6296941a5b65981cfd06a9, type: 3}
-    distance: 160
-    count: 10
-    heightRange: {x: 0.32, y: 0.38}
-    scaleRange: {x: 20, y: 25}
-    gapRange: {x: 30, y: 30}
-    randomFlipX: 0
-  - name: tree
-    sprites:
-    - {fileID: 21300000, guid: 2c05d3275d6296941a5b65981cfd06a9, type: 3}
-    distance: 35
-    count: 3
-    heightRange: {x: 0.3, y: 0.3}
-    scaleRange: {x: 20, y: 20}
-    gapRange: {x: 50, y: 50}
-    randomFlipX: 0
-  - name: tree
-    sprites:
-    - {fileID: 21300000, guid: 2c05d3275d6296941a5b65981cfd06a9, type: 3}
-    distance: 80
-    count: 3
-    heightRange: {x: 0.3, y: 0.3}
-    scaleRange: {x: 20, y: 20}
-    gapRange: {x: 50, y: 50}
-    randomFlipX: 0
-  seed: 0
