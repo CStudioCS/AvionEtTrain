@@ -14,6 +14,9 @@ public class Train : MonoBehaviour
     [SerializeField] private TMP_Text MoneyText;
 
     [SerializeField] private List<Wagon> WagonPrefab = new List<Wagon>();
+    [Header("Wagon Parameteres")]
+    [SerializeField] public float cashMultiplierWhenSelected;
+    [SerializeField] public float speedMultiplierWhenSelected;
     private List<Wagon> WagonList = new List<Wagon>();
 
     private int SelectedWagon;

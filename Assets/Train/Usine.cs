@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class Usine : Wagon
 {
     private float moneyRate = 1.2f;
@@ -8,7 +7,7 @@ public class Usine : Wagon
         train.money += Time.deltaTime * moneyRate;
         if(isSelected)
         {
-            train.money += Time.deltaTime * moneyRate;
+            train.money += Time.deltaTime * moneyRate * train.cashMultiplierWhenSelected;
         }
     }
 }

@@ -143,6 +143,14 @@ PrefabInstance:
       propertyPath: FirstPos.y
       value: -4
       objectReference: {fileID: 0}
+    - target: {fileID: 2457493200521197944, guid: 51b7f6638b648374292cb70249a08e9b, type: 3}
+      propertyPath: cashMultiplierWhenSelected
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2457493200521197944, guid: 51b7f6638b648374292cb70249a08e9b, type: 3}
+      propertyPath: speedMultiplierWhenSelected
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4556539657447932452, guid: 51b7f6638b648374292cb70249a08e9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1042,9 +1050,10 @@ MonoBehaviour:
   dashCooldown: 2
   dashSpeed: 30
   dashDuration: 0.001
+  windSpeed: 30
   shootSpeed: 20
   shootCooldown: 0.1
-  windSpeed: 30
+  Bullet: {fileID: 3355817595182736118, guid: 66514eb0083e1b7a7adeaf8be1a24d74, type: 3}
   pitchAmplitude: 50
   changePitchSpeed: 130
   backToDefaultPositionSpeed: 0.94
