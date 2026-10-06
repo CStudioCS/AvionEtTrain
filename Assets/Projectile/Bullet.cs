@@ -1,13 +1,17 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float speed;
+    public float speed;
 
-    private Vector2 dir;
+    public Vector2 dir;
 
     void Update()
     {
-        transform.position = transform.position + (Vector3)(dir * speed);
+        transform.position = transform.position + (Vector3)(speed * Time.deltaTime * dir);
+        if (transform.position.magnitude > 15)
+            Destroy(this);
     }
+
 }
