@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Avion : MonoBehaviour
@@ -5,21 +6,31 @@ public class Avion : MonoBehaviour
     private InputSystem_Actions inputActions;
     [HideInInspector] public Vector2 movementInput;
     private bool dashInput;
-    [SerializeField] private float playerSpeedX;   // accélération horizontale (unités/s²)
-    [SerializeField] private float playerSpeedY;   // vitesse verticale max (unités/s)
+
+    private bool shootInput;
+    [SerializeField] private float playerSpeedX;   // accï¿½lï¿½ration horizontale (unitï¿½s/sï¿½)
+    [SerializeField] private float playerSpeedY;   // vitesse verticale max (unitï¿½s/s)
     [SerializeField] public Rigidbody2D rb;
 
     [Header("Dash")]
     [SerializeField] private float dashCooldown;
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashDuration;
-    [SerializeField] private float windSpeed;      // décélération due au vent (unités/s²)
+    [SerializeField] private float windSpeed;      // dï¿½cï¿½lï¿½ration due au vent (unitï¿½s/sï¿½)
     private Dash dash;
 
+    [Header("Bullet")]
+
+    [SerializeField] private float shootSpeed;
+    [SerializeField] private float shootCooldown;
+    [SerializeField] GameObject Bullet;
+    private Shoot shoot;
+
+
     [Header("Graphics")]
-    [SerializeField] private float pitchAmplitude;            // amplitude max de l'inclinaison (degrés), >= 0
-    [SerializeField] private float changePitchSpeed;          // vitesse de changement d'inclinaison (degrés/s)
-    [SerializeField] private float backToDefaultPositionSpeed; // entre 0 et 1 : fraction de l'angle conservée par frame à 60 FPS
+    [SerializeField] private float pitchAmplitude;            // amplitude max de l'inclinaison (degrï¿½s), >= 0
+    [SerializeField] private float changePitchSpeed;          // vitesse de changement d'inclinaison (degrï¿½s/s)
+    [SerializeField] private float backToDefaultPositionSpeed; // entre 0 et 1 : fraction de l'angle conservï¿½e par frame ï¿½ 60 FPS
 
     private void Awake()
     {
@@ -29,6 +40,7 @@ public class Avion : MonoBehaviour
     private void Start()
     {
         dash = new Dash(dashCooldown, dashSpeed, dashDuration, this);
+        shoot = new Shoot(shootCooldown, shootSpeed, this, Bullet);
     }
 
     private void OnEnable()
@@ -46,6 +58,7 @@ public class Avion : MonoBehaviour
         // input (lu dans Update pour ne jamais rater un appui)
         movementInput = inputActions.Avion.Move.ReadValue<Vector2>();
         dashInput = inputActions.Avion.Dash.WasPressedThisFrame();
+        shootInput = inputActions.Avion.Shoot.IsPressed(); //marche aussi si on reste appuyÃ© sur la touche
 
         // rotation
         float currentAngle = (transform.rotation.eulerAngles.z + 180f) % 360f - 180f;
@@ -58,7 +71,7 @@ public class Avion : MonoBehaviour
         }
         else
         {
-            // même comportement qu'avant à 60 FPS, mais indépendant du framerate
+            // mï¿½me comportement qu'avant ï¿½ 60 FPS, mais indï¿½pendant du framerate
             float decay = Mathf.Pow(backToDefaultPositionSpeed, Time.deltaTime * 60f);
             newAngle = currentAngle * decay;
         }
@@ -67,8 +80,12 @@ public class Avion : MonoBehaviour
 
         // abilities
         dash.Update(Time.deltaTime);
+        shoot.Update(Time.deltaTime);
         if (dashInput && movementInput.x >= 0) // dash only towards right side of the screen
             dash.TryActivate();
+
+        if (shootInput)
+            shoot.TryActivate();
     }
 
     void FixedUpdate()

@@ -1042,6 +1042,8 @@ MonoBehaviour:
   dashCooldown: 2
   dashSpeed: 30
   dashDuration: 0.001
+  shootSpeed: 20
+  shootCooldown: 0.1
   windSpeed: 30
   pitchAmplitude: 50
   changePitchSpeed: 130

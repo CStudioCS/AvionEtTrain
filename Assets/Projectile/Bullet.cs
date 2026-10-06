@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float speed;
+    public float speed;
 
-    private Vector2 dir;
+    public Vector2 dir;
 
     void Update()
     {
-        transform.position = transform.position + (Vector3)(dir * speed);
+        transform.position = transform.position + (Vector3)(speed * Time.deltaTime * dir);
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        Debug.Log(screenPos);
+        if (screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height)
+            Destroy(gameObject);
     }
+
 }
