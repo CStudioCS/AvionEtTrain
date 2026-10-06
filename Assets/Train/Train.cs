@@ -5,13 +5,12 @@ using UnityEngine.InputSystem;
 
 public class Train : MonoBehaviour
 {
-    public Train instance;
+    public static Train instance;
 
     public float distance;
     public float money;
 
     public Vector3 FirstPos;
-
     [SerializeField] private TMP_Text MoneyText;
 
     [SerializeField] private List<Wagon> WagonPrefab = new List<Wagon>();
@@ -21,13 +20,18 @@ public class Train : MonoBehaviour
 
     private void Start()
     {
+        SpawnTrain();
         instance = this;
+        distance = 0;
+        money = 0;
+    }
+
+    public void SpawnTrain()
+    {
         for (int i = 0; i < WagonPrefab.Count; i++)
         {
             InstantiateWagon(i);
         }
-        distance = 0;
-        money = 0;
     }
 
     public void InstantiateWagon(int i)
