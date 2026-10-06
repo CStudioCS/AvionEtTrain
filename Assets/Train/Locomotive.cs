@@ -9,7 +9,7 @@ public class Locomotive : Wagon
 
         if (isSelected)
         {
-            train.money += Time.deltaTime * baseSpeed * 0.5f; ;
+            train.distance += Time.deltaTime * baseSpeed * train.speedMultiplierWhenSelected; ;
         }
     }
 
