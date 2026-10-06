@@ -1,16 +1,17 @@
 using System.Collections.Generic;
-using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Train : MonoBehaviour
 {
-    public Train instance;
+    public static Train instance;
 
     public float distance;
     public float money;
 
     public Vector3 FirstPos;
+    [SerializeField] private TMP_Text MoneyText;
 
     [SerializeField] private List<Wagon> WagonPrefab = new List<Wagon>();
     private List<Wagon> WagonList = new List<Wagon>();
@@ -19,24 +20,29 @@ public class Train : MonoBehaviour
 
     private void Start()
     {
+        SpawnTrain();
         instance = this;
-        for(int i = 0; i < WagonPrefab.Count; i++)
-        {
-            InstantiateWagon(i);
-        }
         distance = 0;
         money = 0;
     }
 
+    public void SpawnTrain()
+    {
+        for (int i = 0; i < WagonPrefab.Count; i++)
+        {
+            InstantiateWagon(i);
+        }
+    }
+
     public void InstantiateWagon(int i)
     {
-        if(i >= WagonPrefab.Count || i < 0) return;
+        if (i >= WagonPrefab.Count || i < 0) return;
 
         Wagon wagon = Instantiate(WagonPrefab[i], transform);
 
         wagon.train = this;
         wagon.order = WagonList.Count;
-        if(i == 0)
+        if (i == 0)
         {
             wagon.transform.position = FirstPos;
             wagon.isSelected = true;
@@ -58,6 +64,8 @@ public class Train : MonoBehaviour
 
         if (kb.leftArrowKey.wasPressedThisFrame) MoveSelection(+1);
         if (kb.rightArrowKey.wasPressedThisFrame) MoveSelection(-1);
+
+        DisplayMoney();
     }
     public void MoveSelection(int delta)
     {
@@ -68,5 +76,10 @@ public class Train : MonoBehaviour
         SelectedWagon = next;
         WagonList[SelectedWagon].isSelected = true;
 
+    }
+
+    void DisplayMoney()
+    {
+        MoneyText.SetText("train: $" + money.ToString("0"));
     }
 }

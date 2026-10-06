@@ -6,6 +6,7 @@ public class Locomotive : Wagon
     private void Update()
     {
         train.distance += Time.deltaTime * baseSpeed;
+
         if (isSelected)
         {
             train.money += Time.deltaTime * baseSpeed * 0.5f; ;
