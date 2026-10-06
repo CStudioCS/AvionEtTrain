@@ -257,6 +257,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""20747162-11d8-4438-9d07-5d0853583852"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a969d538-e22e-4ee0-963a-4a42630aa3f0"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
