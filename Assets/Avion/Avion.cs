@@ -58,7 +58,7 @@ public class Avion : MonoBehaviour
         // input (lu dans Update pour ne jamais rater un appui)
         movementInput = inputActions.Avion.Move.ReadValue<Vector2>();
         dashInput = inputActions.Avion.Dash.WasPressedThisFrame();
-        shootInput = inputActions.Avion.Shoot.WasPressedThisFrame();
+        shootInput = inputActions.Avion.Shoot.IsPressed(); //marche aussi si on reste appuyé sur la touche
 
         // rotation
         float currentAngle = (transform.rotation.eulerAngles.z + 180f) % 360f - 180f;
@@ -80,6 +80,7 @@ public class Avion : MonoBehaviour
 
         // abilities
         dash.Update(Time.deltaTime);
+        shoot.Update(Time.deltaTime);
         if (dashInput && movementInput.x >= 0) // dash only towards right side of the screen
             dash.TryActivate();
 

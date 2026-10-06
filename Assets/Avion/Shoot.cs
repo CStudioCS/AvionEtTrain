@@ -17,7 +17,7 @@ public class Shoot : Ability
     {
         GameObject thisBullet = GameObject.Instantiate(bullet,avion.transform.position , avion.transform.rotation);
         Bullet thisBulletScript = thisBullet.GetComponent<Bullet>();
-        thisBulletScript.dir = avion.movementInput;
+        thisBulletScript.dir = avion.transform.rotation * Vector2.right; //convertit le quaternion en vector2
         thisBulletScript.speed = bulletSpeed;
 
         

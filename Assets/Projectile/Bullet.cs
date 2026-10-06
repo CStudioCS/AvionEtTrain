@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -11,7 +10,7 @@ public class Bullet : MonoBehaviour
     {
         transform.position = transform.position + (Vector3)(speed * Time.deltaTime * dir);
         if (transform.position.magnitude > 15)
-            Destroy(this);
+            Destroy(gameObject);
     }
 
 }
