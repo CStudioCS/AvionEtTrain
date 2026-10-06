@@ -9,7 +9,9 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.position = transform.position + (Vector3)(speed * Time.deltaTime * dir);
-        if (transform.position.magnitude > 15)
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        Debug.Log(screenPos);
+        if (screenPos.x < 0 || screenPos.x > Screen.width || screenPos.y < 0 || screenPos.y > Screen.height)
             Destroy(gameObject);
     }
 
