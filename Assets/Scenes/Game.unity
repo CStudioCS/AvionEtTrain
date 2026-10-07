@@ -1038,9 +1038,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b96ebc9967b96f4e8713f51064111d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  maxHealth: 5
+  invincibilityDuration: 1
+  blinkInterval: 0.08
+  hitFlashDuration: 0.12
+  hitFlashColor: {r: 1, g: 0.25, b: 0.25, a: 1}
   movementInput: {x: 0, y: 0}
   playerSpeedX: 60
-  playerSpeedY: 40
+  playerSpeedY: 5
   rb: {fileID: 1393309269}
   dashCooldown: 2
   dashSpeed: 30
@@ -1122,6 +1127,75 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.85, y: 0.26}
   m_EdgeRadius: 0
+--- !u!114 &1393309271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393309265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9303712e01dc4bcb997e0237d9f652ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+  offset: {x: 0, y: 0.87}
+  size: {x: 1.2, y: 0.13}
+  border: 0.04
+  sortingOrder: 50
+  backgroundColor: {r: 0, g: 0, b: 0, a: 0.6}
+  trailColor: {r: 1, g: 1, b: 1, a: 0.9}
+  fullColor: {r: 0.3, g: 0.9, b: 0.3, a: 1}
+  lowColor: {r: 0.95, g: 0.2, b: 0.2, a: 1}
+  trailDelay: 0.35
+  trailSpeed: 1.5
+  pipSize: 0.12
+  pipSpacing: 0.06
+  pipOnColor: {r: 1, g: 0.85, b: 0.25, a: 1}
+  pipOffColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+--- !u!114 &1393309272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393309265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ebbd82307d4b848c403e51d3f20aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mitrailleuse
+  bulletPrefab: {fileID: 1100000000000000005, guid: 8d91e64a5c64480e8a918ec314f03589, type: 3}
+  fireRate: 9
+  spread: 3
+  muzzleOffset: {x: 0.5, y: 0}
+  heatPerShot: 0.08
+  coolingDelay: 0.25
+  coolingRate: 0.6
+  overheatCoolingRate: 0.45
+  gaugeOffset: {x: 0, y: 0.7}
+  gaugeSize: {x: 1, y: 0.06}
+  coldColor: {r: 1, g: 0.85, b: 0.3, a: 1}
+  hotColor: {r: 1, g: 0.3, b: 0.1, a: 1}
+--- !u!114 &1393309273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393309265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea35a7e181fc467bb5ec3ae4955cb4f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LanceBombes
+  bombPrefab: {fileID: 1100000000000000005, guid: f2678dad766f49d3826a89eaa9c7e808, type: 3}
+  reloadTime: 2.5
+  dropOffset: {x: 0, y: -0.3}
+  inheritVelocity: 0.6
+  gaugeOffset: {x: 0, y: 0.6}
+  gaugeSize: {x: 1, y: 0.05}
+  gaugeColor: {r: 0.4, g: 0.7, b: 1, a: 1}
 --- !u!1 &1610622692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,43 +1435,3 @@ SceneRoots:
   - {fileID: 1200684190}
   - {fileID: 1835630486}
   - {fileID: 548896259}
---- !u!114 &1393309271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393309265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9303712e01dc4bcb997e0237d9f652ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
-  offset: {x: 0, y: 0.87}
-  size: {x: 1.2, y: 0.13}
---- !u!114 &1393309272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393309265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ebbd82307d4b848c403e51d3f20aca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Mitrailleuse
-  bulletPrefab: {fileID: 1100000000000000005, guid: 8d91e64a5c64480e8a918ec314f03589, type: 3}
---- !u!114 &1393309273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393309265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea35a7e181fc467bb5ec3ae4955cb4f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LanceBombes
-  bombPrefab: {fileID: 1100000000000000005, guid: f2678dad766f49d3826a89eaa9c7e808, type: 3}
